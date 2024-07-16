@@ -23,7 +23,7 @@ langgraph-sdk = "^0.1.23"
 langchain-community = "^0.2.6"
 tavily-python = "^0.3.3"
 tiktoken = "^0.7.0"
-
+langchain_huggingface
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.4.10"
 mypy = "^1.10.0"
