@@ -4,9 +4,8 @@ from functools import lru_cache
 
 import langsmith
 from langchain_core.runnables import RunnableConfig
-from langchain_fireworks import FireworksEmbeddings
 from pinecone import Pinecone
-
+from langchain_huggingface import HuggingFaceEmbeddings
 from lang_memgpt import _schemas as schemas
 from lang_memgpt import _settings as settings
 
@@ -35,7 +34,7 @@ def ensure_configurable(config: RunnableConfig) -> schemas.GraphConfig:
 
 @lru_cache
 def get_embeddings():
-    return FireworksEmbeddings(model="nomic-ai/nomic-embed-text-v1.5")
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 
 __all__ = ["ensure_configurable"]
