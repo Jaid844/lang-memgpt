@@ -22,7 +22,6 @@ from typing import Optional, Tuple
 import langsmith
 import tiktoken
 from langchain.chat_models import init_chat_model
-from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.messages.utils import get_buffer_string
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables.config import (
@@ -46,8 +45,7 @@ logger = logging.getLogger("memory")
 _EMPTY_VEC = [0.0] * 768
 
 # Initialize the search tool
-search_tool = TavilySearchResults(max_results=1)
-tools = [search_tool]
+
 
 
 @tool
@@ -185,7 +183,7 @@ def store_core_memory(memory: str, index: Optional[int] = None) -> str:
 
 
 # Combine all tools
-all_tools = tools + [save_recall_memory, search_memory, store_core_memory]
+all_tools = [save_recall_memory, search_memory, store_core_memory]
 
 # Define the prompt template for the agent
 prompt = ChatPromptTemplate.from_messages(
