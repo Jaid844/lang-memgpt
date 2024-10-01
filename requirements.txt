@@ -6,3 +6,4 @@ langchain_pinecone
 langchain-community
 tiktoken
 langchain-pinecone
+langchain-huggingface
